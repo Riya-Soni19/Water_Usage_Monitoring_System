@@ -183,11 +183,17 @@ def create_data_window(title, columns, rows, width=850, height=430):
     frame.pack(fill="both", expand=True, padx=15, pady=10)
 
     tree = ttk.Treeview(frame, columns=columns, show="headings")
+
     for column in columns:
-        tree.heading(column, texlt=column)
+        tree.heading(column, text=column)
         tree.column(column, width=180, anchor="center")
 
-    scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
+    scrollbar = ttk.Scrollbar(
+        frame,
+        orient="vertical",
+        command=tree.yview
+    )
+
     tree.configure(yscrollcommand=scrollbar.set)
     tree.pack(side="left", fill="both", expand=True)
     scrollbar.pack(side="right", fill="y")
